@@ -1,0 +1,61 @@
+---
+title: R and Econometrics
+authors:
+  - name: Aria Huang
+    affiliation: The University
+    roles: note-taking
+    corresponding: true
+bibliography: references.bib
+---
+
+## Probability and Basics
+
+### Probability distributions of discrete random variables
+
+```{r}
+# sameple function to simulate the random outcome
+sample (1:6, size = 1)
+
+# generate the vector of probabilities 
+probability <- rep(1/6, 6) 
+
+# plot the probabilities 
+plot(probability,
+     xlab = "Outcomes",
+     ylab="Probability",
+     main = "Probability Distribution",
+     pch=20) 
+
+# generate the vector of cumulative probabilities 
+cum_probability <- cumsum(probability) 
+
+# plot the probabilites 
+plot(cum_probability, 
+     xlab = "Outcomes", 
+     ylab="Cumulative Probability",
+     main = "Cumulative Probability Distribution",
+     pch=20) 
+```
+
+### Bernoulli Trials
+
+```{r}
+
+# simulate coin tossing heads and tails
+
+sample ( c ("H", "T"), size =1)
+
+#binomial distribution for dichotomous variable/ a variable with two possible distinct outcomes
+
+dbinom( x= 5, 
+        size = 10, 
+        prob = 0.5)
+
+# the probabiliy of observing head k=5 times when tossing a fair coin n=10 times is about 24.6%
+
+# compute P(4 <= k <= 7) using 'dbinom()'
+sum(dbinom(x = 4:7, size = 10, prob = 0.5))
+
+# compute P(4 <= k <= 7) using 'pbinom()'
+pbinom(size = 10, prob = 0.5, q = 7) - pbinom(size = 10, prob = 0.5, q = 3) 
+```
